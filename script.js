@@ -63,7 +63,242 @@ const buttonPositions = [
     { id: "AT 6", x: 150, y: 350, type: "diamond" },
 ];
 
-
+const linePoints4 = [
+    //Outline
+    { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+    { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+    { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+    { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+    { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+    { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+    { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+    { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+    { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+    { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+    { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+    { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+    
+    //3 servers on dining
+    { start: { x: 1425, y: 282 }, end: { x: 1260, y: 282 } },
+    { start: { x: 1260, y: 282 }, end: { x: 1260, y: 170 } },
+    { start: { x: 1260, y: 170 }, end: { x: 1060, y: 170 } },
+    { start: { x: 1425, y: 482 }, end: { x: 1320, y: 482 } },
+    { start: { x: 1320, y: 482 }, end: { x: 1320, y: 400 } },
+    { start: { x: 1320, y: 400 }, end: { x: 1210, y: 400 } },
+    { start: { x: 1210, y: 400 }, end: { x: 1210, y: 615 } },
+    { start: { x: 1210, y: 615 }, end: { x: 1125, y: 615 } },
+    
+    //Cove
+    { start: { x: 775, y: 62 }, end: { x: 775, y: 400 } },
+    
+    //Bar including BB2
+    { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+    { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+    
+];
+const linePoints5 = [
+    //Outline
+    { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+    { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+    { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+    { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+    { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+    { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+    { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+    { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+    { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+    { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+    { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+    { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+    
+    //3 servers on dining
+    { start: { x: 1425, y: 282 }, end: { x: 1260, y: 282 } },
+    { start: { x: 1260, y: 282 }, end: { x: 1260, y: 170 } },
+    { start: { x: 1260, y: 170 }, end: { x: 1060, y: 170 } },
+    { start: { x: 1425, y: 482 }, end: { x: 1320, y: 482 } },
+    { start: { x: 1320, y: 482 }, end: { x: 1320, y: 400 } },
+    { start: { x: 1320, y: 400 }, end: { x: 1210, y: 400 } },
+    { start: { x: 1210, y: 400 }, end: { x: 1210, y: 615 } },
+    { start: { x: 1210, y: 615 }, end: { x: 1125, y: 615 } },
+    
+    //Cove
+    { start: { x: 775, y: 62 }, end: { x: 775, y: 400 } },
+    
+    //Bar including BB2
+    { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+    { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+    
+    
+];
+const linePoints6 = [
+    //Outline
+    { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+    { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+    { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+    { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+    { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+    { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+    { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+    { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+    { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+    { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+    { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+    { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+    
+    //4 servers on dining
+    { start: { x: 1425, y: 220 }, end: { x: 1340, y: 220 } },
+    { start: { x: 1340, y: 220 }, end: { x: 1340, y: 180 } },
+    { start: { x: 1340, y: 180 }, end: { x: 1060, y: 180 } },
+    { start: { x: 1425, y: 370 }, end: { x: 1160, y: 370 } },
+    { start: { x: 1160, y: 370 }, end: { x: 1160, y: 180 } },
+    { start: { x: 1425, y: 482 }, end: { x: 1320, y: 482 } },
+    { start: { x: 1320, y: 482 }, end: { x: 1320, y: 400 } },
+    { start: { x: 1320, y: 400 }, end: { x: 1210, y: 400 } },
+    { start: { x: 1210, y: 400 }, end: { x: 1210, y: 615 } },
+    { start: { x: 1210, y: 615 }, end: { x: 1125, y: 615 } },
+    
+    //Cove
+    { start: { x: 775, y: 62 }, end: { x: 775, y: 400 } },
+    
+    //Bar including BB2
+    { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+    { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+    
+];
+const linePoints7 = [
+    //Outline
+    { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+    { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+    { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+    { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+    { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+    { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+    { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+    { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+    { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+    { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+    { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+    { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+    
+    //3 servers on dining
+    { start: { x: 1425, y: 282 }, end: { x: 1260, y: 282 } },
+    { start: { x: 1260, y: 282 }, end: { x: 1260, y: 170 } },
+    { start: { x: 1260, y: 170 }, end: { x: 1060, y: 170 } },
+    { start: { x: 1425, y: 482 }, end: { x: 1320, y: 482 } },
+    { start: { x: 1320, y: 482 }, end: { x: 1320, y: 400 } },
+    { start: { x: 1320, y: 400 }, end: { x: 1210, y: 400 } },
+    { start: { x: 1210, y: 400 }, end: { x: 1210, y: 615 } },
+    { start: { x: 1210, y: 615 }, end: { x: 1125, y: 615 } },
+    
+    //Cove
+    { start: { x: 775, y: 62 }, end: { x: 775, y: 400 } },
+    
+    //Bar including BB2
+    { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+    { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+    
+    //Addition
+    { start: { x: 45, y: 238 }, end: { x: 380, y: 238 } },
+    
+];
+const linePoints8 = [
+    //Outline
+    { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+    { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+    { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+    { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+    { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+    { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+    { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+    { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+    { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+    { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+    { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+    { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+    
+    //4 servers on dining
+    { start: { x: 1425, y: 220 }, end: { x: 1340, y: 220 } },
+    { start: { x: 1340, y: 220 }, end: { x: 1340, y: 180 } },
+    { start: { x: 1340, y: 180 }, end: { x: 1060, y: 180 } },
+    { start: { x: 1425, y: 370 }, end: { x: 1160, y: 370 } },
+    { start: { x: 1160, y: 370 }, end: { x: 1160, y: 180 } },
+    { start: { x: 1425, y: 482 }, end: { x: 1320, y: 482 } },
+    { start: { x: 1320, y: 482 }, end: { x: 1320, y: 400 } },
+    { start: { x: 1320, y: 400 }, end: { x: 1210, y: 400 } },
+    { start: { x: 1210, y: 400 }, end: { x: 1210, y: 615 } },
+    { start: { x: 1210, y: 615 }, end: { x: 1125, y: 615 } },
+    
+    //Cove
+    { start: { x: 775, y: 62 }, end: { x: 775, y: 400 } },
+    
+    //Bar including BB2
+    { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+    { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+    
+    //Addition
+    { start: { x: 45, y: 238 }, end: { x: 228, y: 238 } },
+    { start: { x: 228, y: 238 }, end: { x: 228, y: 150 } },
+    { start: { x: 228, y: 150 }, end: { x: 380, y: 150 } },
+    
+];
+const linePoints9 = [
+    //Outline
+    { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+    { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+    { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+    { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+    { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+    { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+    { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+    { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+    { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+    { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+    { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+    { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+    { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+    
+    //4 servers on dining
+    { start: { x: 1425, y: 220 }, end: { x: 1340, y: 220 } },
+    { start: { x: 1340, y: 220 }, end: { x: 1340, y: 180 } },
+    { start: { x: 1340, y: 180 }, end: { x: 1060, y: 180 } },
+    { start: { x: 1425, y: 370 }, end: { x: 1160, y: 370 } },
+    { start: { x: 1160, y: 370 }, end: { x: 1160, y: 180 } },
+    { start: { x: 1425, y: 482 }, end: { x: 1320, y: 482 } },
+    { start: { x: 1320, y: 482 }, end: { x: 1320, y: 400 } },
+    { start: { x: 1320, y: 400 }, end: { x: 1210, y: 400 } },
+    { start: { x: 1210, y: 400 }, end: { x: 1210, y: 615 } },
+    { start: { x: 1210, y: 615 }, end: { x: 1125, y: 615 } },
+    
+    //Cove
+    { start: { x: 775, y: 62 }, end: { x: 775, y: 400 } },
+    
+    //Bar including BB2
+    { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+    { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+    
+    //Addition
+    { start: { x: 45, y: 320 }, end: { x: 130, y: 320 } },
+    { start: { x: 130, y: 320 }, end: { x: 130, y: 415 } },
+    { start: { x: 130, y: 415 }, end: { x: 270, y: 415 } },
+    { start: { x: 270, y: 415 }, end: { x: 270, y: 320 } },
+    { start: { x: 270, y: 320 }, end: { x: 380, y: 320 } },
+    { start: { x: 45, y: 170 }, end: { x: 130, y: 170 } },
+    { start: { x: 130, y: 170 }, end: { x: 130, y: 230 } },
+    { start: { x: 130, y: 230 }, end: { x: 238, y: 230 } },
+    { start: { x: 238, y: 230 }, end: { x: 238, y: 150 } },
+    { start: { x: 238, y: 150 }, end: { x: 380, y: 150 } },
+];
 
 let serverCount = 0;
 
@@ -122,21 +357,130 @@ function updateButtonColor(btn, startTime) {
     btn.style.backgroundColor = elapsed < 5 ? 'green' : elapsed < 10 ? 'yellow' : elapsed < 15 ? 'orange' : 'red';
 }
 
+function drawLines(serverCount) {
+    const canvas = document.getElementById('floorCanvas');
+    const ctx = canvas.getContext('2d');
+    if (serverCount == 4){
+        const linesToDraw = linePoints4.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+    else if (serverCount == 7){
+        const linesToDraw = linePoints7.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+    else if (serverCount==5){
+        const linesToDraw = linePoints5.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+    else if (serverCount == 6){
+        const linesToDraw = linePoints6.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+    else if (serverCount == 8){
+        const linesToDraw = linePoints8.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+    else if (serverCount == 9){
+        const linesToDraw = linePoints9.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+}
+
+
 // Application initialization
 function initialize() {
     drawFloorLayout();
     createButtons();
+    drawLines(serverCount);
 }
 
 document.getElementById('submitServers').addEventListener('click', () => {
     const input = parseInt(document.getElementById('serverCount').value, 10);
-    if (input > 0) {
+    if (input > 3 && input <= buttonPositions.length) {
         serverCount = input;
         alert(`Number of servers: ${serverCount}`);
         hideModal();
-        initialize();
+        initialize(serverCount);
     } else {
-        alert('Please enter a valid number of servers.');
+        alert(`Please enter a valid number between 4 and 9.`);
     }
 });
 
