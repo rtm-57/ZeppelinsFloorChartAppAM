@@ -8,12 +8,19 @@
 </head>
 <body>
     <div id="app">
-        <canvas id="floorCanvas" width="800" height="600"></canvas>
-        <div id="controls">
-            <button class="station-button" data-id="1">Station 1</button>
-            <button class="station-button" data-id="2">Station 2</button>
-            <button class="station-button" data-id="3">Station 3</button>
-            <button class="reset-button">Reset</button>
+        <!-- Popup Modal -->
+        <div id="serverModal" class="modal">
+            <div class="modal-content">
+                <h2>Shift Information</h2>
+                <label for="serverCount">Enter the number of servers on shift:</label>
+                <input type="number" id="serverCount" min="1" max="50" />
+                <button id="submitServers">Submit</button>
+            </div>
+        </div>
+
+        <div id="canvas-container" style="display: none;">
+            <canvas id="floorCanvas" width="1600" height="800"></canvas>
+            <div id="controls"></div> <!-- Buttons dynamically populated -->
         </div>
     </div>
     <script src="script.js"></script>
