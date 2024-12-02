@@ -74,6 +74,21 @@ body {
     font-weight: bold;
 }
 
+.reset-button {
+    position: absolute; /* Allows positioning via left and top */
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #ff1a1a;
+}
 .modal {
     display: none;
     position: fixed;

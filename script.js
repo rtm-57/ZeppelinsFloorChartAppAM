@@ -576,6 +576,44 @@ document.getElementById('submitServers').addEventListener('click', () => {
     }
 });
 
+document.getElementById('resetButton').addEventListener('click', () => {
+    resetProgram();
+});
+
+function resetProgram() {
+    // Reset server-related variables
+    serverCount = 0;
+    serverNames = [];
+    document.getElementById('namesContainer').innerHTML = '';
+
+    // Clear the canvas
+    const canvas = document.getElementById('floorCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Reset button states
+    const controlsDiv = document.getElementById('controls');
+    controlsDiv.innerHTML = '';
+
+    // Hide the canvas container and show the modal
+    document.getElementById('canvas-container').style.display = 'none';
+    showModal();
+}
+
+document.getElementById('resetButton').addEventListener('click', () => {
+    if (confirm("Are you sure you want to reset? This will clear all progress.")) {
+        resetProgram();
+    }
+});
+
+function positionResetButton(x, y) {
+    const resetButton = document.getElementById('resetButton');
+    resetButton.style.left = `${x}px`; // Set X position
+    resetButton.style.top = `${y}px`; // Set Y position
+}
+
+// Call this function during initialization or as needed
+positionResetButton(100, 600); // Example: Place the Reset button at (300, 500)
 
 
 // Application initialization
@@ -584,7 +622,9 @@ function initialize(serverCount, labelPositions) {
     createButtons();         // Create interactive buttons
     drawLines(serverCount);  // Draw server-specific lines
     drawLabels(labelPositions); // Draw labels at specific positions
+    positionResetButton(100, 600); // Place Reset button at a specific location
 }
+
 
 
 window.onload = () => {
