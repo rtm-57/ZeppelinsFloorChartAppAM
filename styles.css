@@ -89,6 +89,39 @@ body {
 .reset-button:hover {
     background-color: #ff1a1a;
 }
+
+.first-cut-button {
+    position: absolute; /* Allows precise placement using left and top */
+    background-color: #0099ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.first-cut-button:hover {
+    background-color: #007acc;
+}
+
+.second-cut-button {
+    position: absolute; /* Allows precise placement using left and top */
+    background-color: #0099ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.second-cut-button:hover {
+    background-color: #007acc;
+}
+
 .modal {
     display: none;
     position: fixed;

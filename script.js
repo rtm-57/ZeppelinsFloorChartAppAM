@@ -63,6 +63,49 @@ const buttonPositions = [
     { id: "AT 6", x: 150, y: 350, type: "diamond" },
 ];
 
+const linePoints1 = [
+        //Outline
+        { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+        { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+        { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+        { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+        { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+        { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+        { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+        { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+        { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+        { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+        { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+        { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+        { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+        { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+        { start: { x: 1125, y: 400 }, end: { x: 1425, y: 400 } },
+        
+        //Bar including BB2
+        { start: { x: 450, y: 400 }, end: { x: 380, y: 400 } },
+        { start: { x: 380, y: 400 }, end: { x: 380, y: 25 } },
+]
+
+const linePoints2 = [
+        //Outline
+        { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
+        { start: { x: 600, y: 25 }, end: { x: 600, y: 62 } },
+        { start: { x: 600, y: 62 }, end: { x: 1060, y: 62 } },
+        { start: { x: 1060, y: 62 }, end: { x: 1060, y: 25 } },
+        { start: { x: 1060, y: 25 }, end: { x: 1425, y: 25 } },
+        { start: { x: 1425, y: 25 }, end: { x: 1425, y: 715 } },
+        { start: { x: 1425, y: 715 }, end: { x: 1125, y: 715 } },
+        { start: { x: 1125, y: 715 }, end: { x: 1125, y: 400 } },
+        { start: { x: 1125, y: 400 }, end: { x: 1060, y: 400 } },
+        { start: { x: 1060, y: 400 }, end: { x: 1060, y: 62 } },
+        { start: { x: 1060, y: 400 }, end: { x: 450, y: 400 } },
+        { start: { x: 450, y: 400 }, end: { x: 450, y: 460 } },
+        { start: { x: 450, y: 460 }, end: { x: 45, y: 460 } },
+        { start: { x: 45, y: 460 }, end: { x: 45, y: 25 } },
+        
+
+]
+
 const linePoints4 = [
     //Outline
     { start: { x: 45, y: 25 }, end: { x: 600, y: 25 } },
@@ -323,6 +366,18 @@ const predefinedCoordinates7 = [
 
 let serverCount = 0;
 
+let labelPositions = [
+    { name: "Server 1", x: 1475, y: 100 },
+    { name: "Server 2", x: 500, y: 200 },
+    { name: "Server 3", x: 1475, y: 700 },
+    { name: "Server 4", x: 1475, y: 320 },
+    { name: "Server 5", x: 900, y: 300 },
+    { name: "Server 6", x: 1475, y: 450 },
+    { name: "Server 7", x: 100, y: 500 },
+    { name: "Server 8", x: 250, y: 120 },
+    { name: "Server 9", x: 290, y: 300 }
+];
+
 // Show and hide modal logic
 function showModal() {
     document.getElementById('serverModal').style.display = 'flex';
@@ -483,6 +538,40 @@ function drawLines(serverCount) {
             ctx.closePath();
         });
     }
+    else if (serverCount == 1){
+        const linesToDraw = linePoints1.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
+    else if (serverCount == 2){
+        const linesToDraw = linePoints2.slice(0, 100); // Get the first `serverCount` pairs
+    
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        drawFloorLayout(); // Redraw the floor layout
+    
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+    
+        linesToDraw.forEach(line => {
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y); // Line start point
+            ctx.lineTo(line.end.x, line.end.y); // Line end point
+            ctx.stroke();
+            ctx.closePath();
+        });
+    }
 }
 
 let serverNames = [];
@@ -515,8 +604,8 @@ function drawLabels(labelPositions) {
     const canvas = document.getElementById('floorCanvas');
     const ctx = canvas.getContext('2d');
 
-    ctx.font = '16px Arial';
-    ctx.fillStyle = 'black';
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'red';
     ctx.textAlign = 'center';
 
     labelPositions.forEach(label => {
@@ -613,16 +702,97 @@ function positionResetButton(x, y) {
 }
 
 // Call this function during initialization or as needed
-positionResetButton(100, 600); // Example: Place the Reset button at (300, 500)
+positionResetButton(100, 650); // Example: Place the Reset button at (300, 500)
+
+function positionFirstCutButton(x, y) {
+    const firstCutButton = document.getElementById('firstCutButton');
+    firstCutButton.style.left = `${x}px`; // Set X position
+    firstCutButton.style.top = `${y}px`; // Set Y position
+}
+
+// Set the button's position on the grid
+positionFirstCutButton(100, 550); // Place "First Cut" button at (100, 500)
+
+function positionSecondCutButton(x, y) {
+    const secondCutButton = document.getElementById('secondCutButton');
+    secondCutButton.style.left = `${x}px`; // Set X position
+    secondCutButton.style.top = `${y}px`; // Set Y position
+}
+
+// Set the button's position on the grid
+positionSecondCutButton(100, 600); // Place "First Cut" button at (100, 500)
+
+
+document.getElementById('firstCutButton').addEventListener('click', () => {
+    deleteSpecificLabels(1);
+});
+
+document.getElementById('secondCutButton').addEventListener('click', () => {
+    deleteSpecificLabels(2);
+});
+
+function deleteSpecificLabels(cut) {
+    const canvas = document.getElementById('floorCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let labelsToKeep; // Declare outside the blocks
+
+    if (cut === 1) {
+        labelsToKeep = [0, 1, 2, 6]; // Indices to keep for the first cut
+    } else if (cut === 2) {
+        labelsToKeep = [0, 1]; // Indices to keep for the second cut
+    } else {
+        console.error("Invalid cut parameter");
+        return;
+    }
+
+    // Ensure `labelPositions` exists and has valid data
+    if (!Array.isArray(labelPositions) || labelPositions.length === 0) {
+        console.error("No labels found to process.");
+        return;
+    }
+
+    // Filter labels to keep only the specified ones
+    const remainingLabels = labelPositions.filter((_, index) => labelsToKeep.includes(index));
+
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Redraw the floor layout
+    drawFloorLayout();
+
+    // Draw the custom lines based on the cut type
+    drawCustomLines(cut);
+
+    // Redraw the remaining labels
+    drawLabels(remainingLabels);
+
+    // Update the global `labelPositions` to reflect the remaining labels
+    labelPositions = remainingLabels;
+
+    console.log(`Remaining labels after Cut ${cut}:`, labelPositions);
+}
+
+function drawCustomLines(cut) {
+    if (cut === 1) {
+        drawLines(1); // Draw lines for the first cut
+    } else if (cut === 2) {
+        drawLines(2); // Draw lines for the second cut
+    }
+}
+
 
 
 // Application initialization
-function initialize(serverCount, labelPositions) {
-    drawFloorLayout();       // Draw the base layout
-    createButtons();         // Create interactive buttons
-    drawLines(serverCount);  // Draw server-specific lines
-    drawLabels(labelPositions); // Draw labels at specific positions
-    positionResetButton(100, 600); // Place Reset button at a specific location
+function initialize(serverCount, initialLabelPositions) {
+    labelPositions = initialLabelPositions; // Set the global label positions
+    drawFloorLayout(); // Draw the base layout
+    createButtons(); // Create interactive buttons
+    drawLines(serverCount); // Draw server-specific lines
+    drawLabels(labelPositions); // Draw initial labels
+    positionResetButton(100, 650); // Place Reset button
+    positionFirstCutButton(100, 550); // Place First Cut button
+    positionSecondCutButton(100, 600); // Place First Cut button
 }
 
 
