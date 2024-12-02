@@ -300,6 +300,27 @@ const linePoints9 = [
     { start: { x: 238, y: 150 }, end: { x: 380, y: 150 } },
 ];
 
+const predefinedCoordinates = [
+    { x: 1475, y: 100 }, // For server name 1
+    { x: 500, y: 200 }, // For server name 2
+    { x: 1475, y: 700 }, // For server name 3
+    { x: 1475, y: 320 }, // For server name 4
+    { x: 900, y: 300 }, // For server name 5
+    { x: 1475, y: 450 }, // For server name 6
+    { x: 100, y: 500 }, // For server name 7
+    { x: 250, y: 120 }, // For server name 8
+    { x: 290, y: 300 }  // For server name 9
+];
+const predefinedCoordinates7 = [
+    { x: 1475, y: 100 }, // For server name 1
+    { x: 500, y: 200 }, // For server name 2
+    { x: 1475, y: 700 }, // For server name 3
+    { x: 1475, y: 320 }, // For server name 4
+    { x: 900, y: 300 }, // For server name 5
+    { x: 200, y: 200 }, // For server name 6
+    { x: 100, y: 520 }, // For server name 7
+];
+
 let serverCount = 0;
 
 // Show and hide modal logic
@@ -464,26 +485,109 @@ function drawLines(serverCount) {
     }
 }
 
+let serverNames = [];
 
-// Application initialization
-function initialize() {
-    drawFloorLayout();
-    createButtons();
-    drawLines(serverCount);
+function showNamesModal(count) {
+    const namesContainer = document.getElementById('namesContainer');
+    namesContainer.innerHTML = ''; // Clear previous inputs
+
+    for (let i = 0; i < count; i++) {
+        const label = document.createElement('label');
+        label.textContent = `Server ${i + 1} Name:`;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.id = `serverName${i}`;
+        input.placeholder = `Enter name for Server ${i + 1}`;
+        namesContainer.appendChild(label);
+        namesContainer.appendChild(input);
+        namesContainer.appendChild(document.createElement('br'));
+    }
+
+    document.getElementById('serverNamesModal').style.display = 'flex';
 }
+
+function hideNamesModal() {
+    document.getElementById('serverNamesModal').style.display = 'none';
+    document.getElementById('canvas-container').style.display = 'block';
+}
+
+function drawLabels(labelPositions) {
+    const canvas = document.getElementById('floorCanvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.font = '16px Arial';
+    ctx.fillStyle = 'black';
+    ctx.textAlign = 'center';
+
+    labelPositions.forEach(label => {
+        ctx.fillText(label.name, label.x, label.y); // Draw the name at (x, y)
+    });
+}
+
+function assignCoordinates(names, serverCount) {
+    return names.map((name, index) => {
+        // Handle the special case for server count 7 and server 6
+        if (serverCount === 7 && index === 5) {
+            return {
+                name: name,
+                x: 240, // Special x-coordinate for server 6
+                y: 160  // Special y-coordinate for server 6
+            };
+        }
+
+        // Default behavior for all other labels
+        return {
+            name: name,
+            x: predefinedCoordinates[index].x,
+            y: predefinedCoordinates[index].y
+        };
+    });
+}
+
+document.getElementById('submitNames').addEventListener('click', () => {
+    serverNames = [];
+    const inputs = document.querySelectorAll('#namesContainer input');
+    inputs.forEach(input => {
+        serverNames.push(input.value.trim());
+    });
+
+    if (serverNames.some(name => name === '')) {
+        alert('Please fill in all server names.');
+        return;
+    }
+
+    try {
+        const labelPositions = assignCoordinates(serverNames, serverCount); // Pass server count
+        hideNamesModal();
+        initialize(serverCount, labelPositions); // Pass positions to initialize
+    } catch (error) {
+        alert(error.message);
+    }
+});
 
 document.getElementById('submitServers').addEventListener('click', () => {
     const input = parseInt(document.getElementById('serverCount').value, 10);
-    if (input > 3 && input <= buttonPositions.length) {
+    if (input >= 4 && input <= 9) {
         serverCount = input;
-        alert(`Number of servers: ${serverCount}`);
         hideModal();
-        initialize(serverCount);
+        showNamesModal(serverCount);
     } else {
         alert(`Please enter a valid number between 4 and 9.`);
     }
 });
 
+
+
+// Application initialization
+function initialize(serverCount, labelPositions) {
+    drawFloorLayout();       // Draw the base layout
+    createButtons();         // Create interactive buttons
+    drawLines(serverCount);  // Draw server-specific lines
+    drawLabels(labelPositions); // Draw labels at specific positions
+}
+
+
 window.onload = () => {
-    createButtons();
+    createButtons(); // Initializes the buttons
+    showModal();     // Display the server count modal when the page loads
 };
