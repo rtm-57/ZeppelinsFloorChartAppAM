@@ -1,13 +1,13 @@
 // All button positions and types based on the Python GUI layout
 const buttonPositions = [
     // Regular Buttons
-    { id: "AB 4", x: 335, y: 50, type: "regular" },
-    { id: "AB 5", x: 335, y: 125, type: "regular" },
-    { id: "AB 6", x: 335, y: 200, type: "regular" },
-    { id: "AB 7", x: 335, y: 275, type: "regular" },
-    { id: "AB 8", x: 335, y: 350, type: "regular" },
-    { id: "AB 3", x: 400, y: 425, type: "regular" },
-    { id: "AB 2", x: 510, y: 425, type: "regular" },
+    { id: "AB 4", x: 435, y: 50, type: "regular" },
+    { id: "AB 5", x: 435, y: 125, type: "regular" },
+    { id: "AB 6", x: 435, y: 200, type: "regular" },
+    { id: "AB 7", x: 435, y: 275, type: "regular" },
+    { id: "AB 8", x: 435, y: 350, type: "regular" },
+    { id: "AB 3", x: 500, y: 425, type: "regular" },
+    { id: "AB 2", x: 560, y: 425, type: "regular" },
     { id: "AB 1", x: 620, y: 425, type: "regular" },
     { id: "BB 1", x: 690, y: 50, type: "regular" },
     { id: "BB 2", x: 690, y: 350, type: "regular" },
@@ -49,7 +49,7 @@ const buttonPositions = [
     { id: "RT 1", x: 1400, y: 25, type: "circular" },
     { id: "RT 2", x: 1320, y: 25, type: "circular" },
     // Diamond Buttons
-    { id: "AT 3", x: 435, y: 50, type: "diamond" },
+    { id: "AT 3", x: 505, y: 50, type: "diamond" },
     { id: "AT 1", x: 580, y: 50, type: "diamond" },
     { id: "RT 6", x: 1240, y: 100, type: "diamond" },
     { id: "RT 7", x: 1240, y: 200, type: "diamond" },
@@ -57,15 +57,15 @@ const buttonPositions = [
     { id: "RT 3", x: 1335, y: 100, type: "diamond" },
     { id: "RT 4", x: 1335, y: 200, type: "diamond" },
     { id: "RT 5", x: 1335, y: 300, type: "diamond" },
-    { id: "AT 4", x: 435, y: 150, type: "diamond" },
-    { id: "AT 7", x: 580, y: 175, type: "diamond" },
-    { id: "AT 5", x: 435, y: 250, type: "diamond" },
-    { id: "AT 6", x: 435, y: 350, type: "diamond" },
+    { id: "AT 4", x: 505, y: 150, type: "diamond" },
+    { id: "AT 7", x: 600, y: 175, type: "diamond" },
+    { id: "AT 5", x: 505, y: 250, type: "diamond" },
+    { id: "AT 6", x: 505, y: 350, type: "diamond" },
 ];
 
 const linePoints1 = [
         //Outline
-        { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+        { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
         { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
         { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
         { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -75,10 +75,11 @@ const linePoints1 = [
         { start: { x: 1230, y: 715 }, end: { x: 1230, y: 400 } },
         { start: { x: 1230, y: 400 }, end: { x: 1125, y: 400 } },
         { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
-        { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
+        { start: { x: 1500, y: 400 }, end: { x: 680, y: 400 } },
         { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-        { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-        { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+        { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+        { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
+        
         
         //Bar including BB2
         { start: { x: 680, y: 400 }, end: { x: 680, y: 25 } },
@@ -86,7 +87,7 @@ const linePoints1 = [
 
 const linePoints2 = [
         //Outline
-        { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+        { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
         { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
         { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
         { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -98,15 +99,15 @@ const linePoints2 = [
         { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
         { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
         { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-        { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-        { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+        { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+        { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
         
 
 ]
 
 const linePoints4 = [
     //Outline
-    { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+    { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
     { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
     { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
     { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -118,8 +119,8 @@ const linePoints4 = [
     { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
     { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
     { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-    { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-    { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+    { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+    { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
     
     //Bar including BB2
     { start: { x: 680, y: 400 }, end: { x: 680, y: 25 } },
@@ -140,7 +141,7 @@ const linePoints4 = [
 ];
 const linePoints5 = [
     //Outline
-    { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+    { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
     { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
     { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
     { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -152,9 +153,9 @@ const linePoints5 = [
     { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
     { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
     { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-    { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-    { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
-    
+    { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+    { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
+        
     //Bar including BB2
     { start: { x: 680, y: 400 }, end: { x: 680, y: 25 } },
     
@@ -171,13 +172,12 @@ const linePoints5 = [
     //Cove
     { start: { x: 910, y: 62 }, end: { x: 910, y: 400 } },
     
-
     
     
 ];
 const linePoints6 = [
     //Outline
-    { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+    { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
     { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
     { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
     { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -189,8 +189,8 @@ const linePoints6 = [
     { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
     { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
     { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-    { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-    { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+    { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+    { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
     
     //Bar including BB2
     { start: { x: 680, y: 400 }, end: { x: 680, y: 25 } },
@@ -201,8 +201,8 @@ const linePoints6 = [
     { start: { x: 1410, y: 180 }, end: { x: 1125, y: 180 } },
     { start: { x: 1500, y: 370 }, end: { x: 1210, y: 370 } },
     { start: { x: 1210, y: 370 }, end: { x: 1210, y: 180 } },
-    { start: { x: 1500, y: 495 }, end: { x: 1400, y: 495 } },
-    { start: { x: 1400, y: 495 }, end: { x: 1400, y: 400 } },
+    { start: { x: 1500, y: 560 }, end: { x: 1400, y: 560 } },
+    { start: { x: 1400, y: 560 }, end: { x: 1400, y: 400 } },
     { start: { x: 1400, y: 400 }, end: { x: 1310, y: 400 } },
     { start: { x: 1310, y: 400 }, end: { x: 1310, y: 640 } },
     { start: { x: 1310, y: 640 }, end: { x: 1230, y: 640 } },
@@ -215,7 +215,7 @@ const linePoints6 = [
 ];
 const linePoints7 = [
     //Outline
-    { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+    { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
     { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
     { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
     { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -227,8 +227,8 @@ const linePoints7 = [
     { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
     { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
     { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-    { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-    { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+    { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+    { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
     
     //Bar including BB2
     { start: { x: 680, y: 400 }, end: { x: 680, y: 25 } },
@@ -247,12 +247,12 @@ const linePoints7 = [
     { start: { x: 910, y: 62 }, end: { x: 910, y: 400 } },
     
     //Addition
-    { start: { x: 335, y: 238 }, end: { x: 680, y: 238 } },
+    { start: { x: 430, y: 238 }, end: { x: 680, y: 238 } },
     
 ];
 const linePoints8 = [
     //Outline
-    { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+    { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
     { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
     { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
     { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -264,8 +264,8 @@ const linePoints8 = [
     { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
     { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
     { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-    { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-    { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+    { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+    { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
     
     //Bar including BB2
     { start: { x: 680, y: 400 }, end: { x: 680, y: 25 } },
@@ -276,8 +276,8 @@ const linePoints8 = [
     { start: { x: 1410, y: 180 }, end: { x: 1125, y: 180 } },
     { start: { x: 1500, y: 370 }, end: { x: 1210, y: 370 } },
     { start: { x: 1210, y: 370 }, end: { x: 1210, y: 180 } },
-    { start: { x: 1500, y: 495 }, end: { x: 1400, y: 495 } },
-    { start: { x: 1400, y: 495 }, end: { x: 1400, y: 400 } },
+    { start: { x: 1500, y: 560 }, end: { x: 1400, y: 560 } },
+    { start: { x: 1400, y: 560 }, end: { x: 1400, y: 400 } },
     { start: { x: 1400, y: 400 }, end: { x: 1310, y: 400 } },
     { start: { x: 1310, y: 400 }, end: { x: 1310, y: 640 } },
     { start: { x: 1310, y: 640 }, end: { x: 1230, y: 640 } },
@@ -288,14 +288,14 @@ const linePoints8 = [
 
     
     //Addition
-    { start: { x: 330, y: 238 }, end: { x: 510, y: 238 } },
-    { start: { x: 510, y: 238 }, end: { x: 510, y: 150 } },
-    { start: { x: 510, y: 150 }, end: { x: 680, y: 150 } },
+    { start: { x: 430, y: 238 }, end: { x: 580, y: 238 } },
+    { start: { x: 580, y: 238 }, end: { x: 580, y: 150 } },
+    { start: { x: 580, y: 150 }, end: { x: 680, y: 150 } },
     
 ];
 const linePoints9 = [
     //Outline
-    { start: { x: 330, y: 25 }, end: { x: 780, y: 25 } },
+    { start: { x: 430, y: 25 }, end: { x: 780, y: 25 } },
     { start: { x: 780, y: 25 }, end: { x: 780, y: 62 } },
     { start: { x: 780, y: 62 }, end: { x: 1175, y: 62 } },
     { start: { x: 1175, y: 62 }, end: { x: 1175, y: 25 } },
@@ -307,8 +307,8 @@ const linePoints9 = [
     { start: { x: 1125, y: 400 }, end: { x: 1125, y: 62 } },
     { start: { x: 1125, y: 400 }, end: { x: 680, y: 400 } },
     { start: { x: 680, y: 400 }, end: { x: 680, y: 460 } },
-    { start: { x: 680, y: 460 }, end: { x: 330, y: 460 } },
-    { start: { x: 330, y: 460 }, end: { x: 330, y: 25 } },
+    { start: { x: 680, y: 460 }, end: { x: 430, y: 460 } },
+    { start: { x: 430, y: 460 }, end: { x: 430, y: 25 } },
     
     //Bar excluding BB2
     { start: { x: 750, y: 400 }, end: { x: 750, y: 320 } },
@@ -320,8 +320,8 @@ const linePoints9 = [
     { start: { x: 1410, y: 180 }, end: { x: 1125, y: 180 } },
     { start: { x: 1500, y: 370 }, end: { x: 1210, y: 370 } },
     { start: { x: 1210, y: 370 }, end: { x: 1210, y: 180 } },
-    { start: { x: 1500, y: 495 }, end: { x: 1400, y: 495 } },
-    { start: { x: 1400, y: 495 }, end: { x: 1400, y: 400 } },
+    { start: { x: 1500, y: 560 }, end: { x: 1400, y: 560 } },
+    { start: { x: 1400, y: 560 }, end: { x: 1400, y: 400 } },
     { start: { x: 1400, y: 400 }, end: { x: 1310, y: 400 } },
     { start: { x: 1310, y: 400 }, end: { x: 1310, y: 640 } },
     { start: { x: 1310, y: 640 }, end: { x: 1230, y: 640 } },
@@ -332,17 +332,17 @@ const linePoints9 = [
 
     
     //Addition
-    { start: { x: 330, y: 320 }, end: { x: 420, y: 320 } },
-    { start: { x: 420, y: 320 }, end: { x: 420, y: 415 } },
-    { start: { x: 420, y: 415 }, end: { x: 500, y: 415 } },
-    { start: { x: 500, y: 415 }, end: { x: 500, y: 320 } },
-    { start: { x: 500, y: 320 }, end: { x: 680, y: 320 } },
+    { start: { x: 430, y: 320 }, end: { x: 490, y: 320 } },
+    { start: { x: 490, y: 320 }, end: { x: 490, y: 415 } },
+    { start: { x: 490, y: 415 }, end: { x: 600, y: 415 } },
+    { start: { x: 600, y: 415 }, end: { x: 600, y: 320 } },
+    { start: { x: 600, y: 320 }, end: { x: 680, y: 320 } },
     { start: { x: 680, y: 320 }, end: { x: 680, y: 25 } },
-    { start: { x: 330, y: 170 }, end: { x: 400, y: 170 } },
-    { start: { x: 400, y: 170 }, end: { x: 400, y: 230 } },
-    { start: { x: 400, y: 230 }, end: { x: 500, y: 230 } },
-    { start: { x: 500, y: 230 }, end: { x: 500, y: 150 } },
-    { start: { x: 500, y: 150 }, end: { x: 680, y: 150 } },
+    { start: { x: 430, y: 170 }, end: { x: 490, y: 170 } },
+    { start: { x: 490, y: 170 }, end: { x: 490, y: 230 } },
+    { start: { x: 490, y: 230 }, end: { x: 570, y: 230 } },
+    { start: { x: 570, y: 230 }, end: { x: 570, y: 150 } },
+    { start: { x: 570, y: 150 }, end: { x: 680, y: 150 } },
 
 ];
 
@@ -353,9 +353,9 @@ const predefinedCoordinates = [
     { x: 1550, y: 320 }, // For server name 4
     { x: 960, y: 300 }, // For server name 5
     { x: 1550, y: 450 }, // For server name 6
-    { x: 380, y: 500 }, // For server name 7
-    { x: 520, y: 120 }, // For server name 8
-    { x: 540, y: 300 }  // For server name 9
+    { x: 480, y: 500 }, // For server name 7
+    { x: 590, y: 140 }, // For server name 8
+    { x: 610, y: 300 }  // For server name 9
 ];
 const predefinedCoordinates7 = [
     { x: 1550, y: 100 }, // For server name 1
@@ -363,8 +363,8 @@ const predefinedCoordinates7 = [
     { x: 1550, y: 700 }, // For server name 3
     { x: 1550, y: 320 }, // For server name 4
     { x: 960, y: 300 }, // For server name 5
-    { x: 520, y: 200 }, // For server name 6
-    { x: 380, y: 520 }, // For server name 7
+    { x: 620, y: 160 }, // For server name 6
+    { x: 480, y: 520 }, // For server name 7
 ];
 
 let serverCount = 0;
@@ -376,9 +376,9 @@ let labelPositions = [
     { name: "Server 4", x: 1550, y: 320 },
     { name: "Server 5", x: 960, y: 300 },
     { name: "Server 6", x: 1550, y: 450 },
-    { name: "Server 7", x: 380, y: 500 },
-    { name: "Server 8", x: 520, y: 120 },
-    { name: "Server 9", x: 540, y: 300 }
+    { name: "Server 7", x: 480, y: 500 },
+    { name: "Server 8", x: 590, y: 140 },
+    { name: "Server 9", x: 610, y: 300 }
 ];
 
 // Show and hide modal logic
@@ -622,8 +622,8 @@ function assignCoordinates(names, serverCount) {
         if (serverCount === 7 && index === 5) {
             return {
                 name: name,
-                x: 520, // Special x-coordinate for server 6
-                y: 200  // Special y-coordinate for server 6
+                x: 620, // Special x-coordinate for server 6
+                y: 160  // Special y-coordinate for server 6
             };
         }
 
@@ -705,7 +705,7 @@ function positionResetButton(x, y) {
 }
 
 // Call this function during initialization or as needed
-positionResetButton(360, 650); // Example: Place the Reset button at (300, 500)
+positionResetButton(460, 650); // Example: Place the Reset button at (300, 500)
 
 function positionFirstCutButton(x, y) {
     const firstCutButton = document.getElementById('firstCutButton');
@@ -714,7 +714,7 @@ function positionFirstCutButton(x, y) {
 }
 
 // Set the button's position on the grid
-positionFirstCutButton(360, 550); // Place "First Cut" button at (100, 500)
+positionFirstCutButton(460, 550); // Place "First Cut" button at (100, 500)
 
 function positionSecondCutButton(x, y) {
     const secondCutButton = document.getElementById('secondCutButton');
@@ -723,7 +723,7 @@ function positionSecondCutButton(x, y) {
 }
 
 // Set the button's position on the grid
-positionSecondCutButton(360, 600); // Place "First Cut" button at (100, 500)
+positionSecondCutButton(460, 600); // Place "First Cut" button at (100, 500)
 
 
 document.getElementById('firstCutButton').addEventListener('click', () => {
@@ -776,6 +776,7 @@ function deleteSpecificLabels(cut) {
     console.log(`Remaining labels after Cut ${cut}:`, labelPositions);
 }
 
+
 function drawCustomLines(cut) {
     if (cut === 1) {
         drawLines(1); // Draw lines for the first cut
@@ -793,9 +794,9 @@ function initialize(serverCount, initialLabelPositions) {
     createButtons(); // Create interactive buttons
     drawLines(serverCount); // Draw server-specific lines
     drawLabels(labelPositions); // Draw initial labels
-    positionResetButton(360, 650); // Place Reset button
-    positionFirstCutButton(360, 550); // Place First Cut button
-    positionSecondCutButton(360, 600); // Place First Cut button
+    positionResetButton(460, 650); // Place Reset button
+    positionFirstCutButton(460, 550); // Place First Cut button
+    positionSecondCutButton(460, 600); // Place First Cut button
 }
 
 
