@@ -403,7 +403,32 @@ function drawFloorLayout() {
 }
 
 // Button timer logic
+
+
 const buttonTimers = {};
+
+
+function createButtons() {
+    const controlsDiv = document.getElementById('controls');
+    buttonPositions.forEach((button) => {
+        const btn = document.createElement('button');
+        btn.className = button.type === 'diamond' ? 'diamond-button' 
+                    : button.type === 'circular' ? 'circular-button' 
+                    : button.type === 'buttonv' ? 'vert-button' 
+                    : 'station-button'; // Assign appropriate styles
+        btn.innerText = button.id;
+        btn.style.left = `${button.x}px`;
+        btn.style.top = `${button.y}px`;
+        buttonTimers[button.id] = null;
+
+        // Apply the dual functionality handler
+        toggleTimer(btn, button.id);
+
+        controlsDiv.appendChild(btn);
+    });
+}
+
+/*
 function createButtons() {
     const controlsDiv = document.getElementById('controls');
     buttonPositions.forEach((button) => {
@@ -417,7 +442,72 @@ function createButtons() {
         controlsDiv.appendChild(btn);
     });
 }
+*/
+function toggleTimer(btn, id) {
+    let holdTimeout;
+    let isHeld = false; // Flag to track if the button is being held
+    let isTouch = false; // Flag to differentiate between touch and mouse
 
+    const startHold = () => {
+        holdTimeout = setTimeout(() => {
+            btn.style.backgroundColor = 'purple'; // Change color when held
+            isHeld = true; // Mark as held
+        }, 2000); // Long press duration (2 seconds)
+    };
+
+    const stopHold = () => {
+        clearTimeout(holdTimeout);
+        if (isHeld) {
+            isHeld = false; // Reset the flag
+            return; // Prevent timer toggle if it was a hold
+        }
+
+        // Short press logic: Start/stop the timer
+        if (btn.classList.contains('active')) {
+            clearInterval(buttonTimers[id]); // Stop the timer
+            btn.classList.remove('active');
+            btn.style.backgroundColor = 'lightgray'; // Reset to default
+        } else {
+            btn.classList.add('active');
+            btn.style.backgroundColor = 'green'; // Timer start color
+            const startTime = Date.now();
+            buttonTimers[id] = setInterval(() => updateButtonColor(btn, startTime), 1000);
+        }
+    };
+
+    // Add mouse and touch event listeners
+    btn.addEventListener('mousedown', (event) => {
+        isTouch = false; // Detect mouse interaction
+        startHold();
+    });
+
+    btn.addEventListener('mouseup', (event) => {
+        if (!isTouch) stopHold();
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        clearTimeout(holdTimeout); // Cancel hold on mouse leave
+        isHeld = false; // Reset the flag
+    });
+
+    btn.addEventListener('touchstart', (event) => {
+        isTouch = false; // Detect touch interaction
+        startHold();
+    });
+
+    btn.addEventListener('touchend', (event) => {
+        if (!isTouch) stopHold();
+    });
+
+    btn.addEventListener('touchcancel', () => {
+        clearTimeout(holdTimeout); // Cancel hold on touch interruption
+        isHeld = false; // Reset the flag
+    });
+}
+
+
+
+/*
 function toggleTimer(btn, id) {
     if (btn.classList.contains('active')) {
         clearInterval(buttonTimers[id]);
@@ -430,11 +520,20 @@ function toggleTimer(btn, id) {
         buttonTimers[id] = setInterval(() => updateButtonColor(btn, startTime), 1000);
     }
 }
-
+*/
 function updateButtonColor(btn, startTime) {
     const elapsed = (Date.now() - startTime) / 1000;
-    btn.style.backgroundColor = elapsed < 60*10 ? 'green' : elapsed < 60*35 ? 'yellow' : elapsed < 60*90 ? 'orange' : 'red';
+    btn.style.backgroundColor =
+        elapsed < 60 * 10
+            ? 'green'
+            : elapsed < 60 * 35
+            ? 'yellow'
+            : elapsed < 60 * 90
+            ? 'orange'
+            : 'red';
 }
+
+
 
 function drawLines(serverCount) {
     const canvas = document.getElementById('floorCanvas');
