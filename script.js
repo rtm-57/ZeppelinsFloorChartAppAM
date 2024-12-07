@@ -461,11 +461,11 @@ function toggleTimer(btn, id) {
 function updateButtonColor(btn, startTime) {
     const elapsed = (Date.now() - startTime) / 1000;
     btn.style.backgroundColor =
-        elapsed < 5
+        elapsed < 60 * 10
             ? 'green'
-            : elapsed < 10
+            : elapsed < 60* 35
             ? 'yellow'
-            : elapsed < 15
+            : elapsed < 60 * 90
             ? 'orange'
             : 'red';
 }
