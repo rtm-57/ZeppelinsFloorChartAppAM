@@ -428,107 +428,44 @@ function createButtons() {
     });
 }
 
-/*
-function createButtons() {
-    const controlsDiv = document.getElementById('controls');
-    buttonPositions.forEach((button) => {
-        const btn = document.createElement('button');
-        btn.className = button.type === 'diamond' ? 'diamond-button' : button.type === 'circular' ? 'circular-button' : button.type === 'buttonv' ? 'vert-button' : 'station-button';
-        btn.innerText = button.id;
-        btn.style.left = `${button.x}px`;
-        btn.style.top = `${button.y}px`;
-        buttonTimers[button.id] = null;
-        btn.addEventListener('click', () => toggleTimer(btn, button.id));
-        controlsDiv.appendChild(btn);
-    });
-}
-*/
 function toggleTimer(btn, id) {
-    let holdTimeout;
-    let isHeld = false; // Flag to track if the button is being held
-    let isTouch = false; // Flag to differentiate between touch and mouse
+    let pressCount = 0;
+    let timer = null;
 
-    const startHold = () => {
-        holdTimeout = setTimeout(() => {
-            btn.style.backgroundColor = 'purple'; // Change color when held
-            isHeld = true; // Mark as held
-        }, 2000); // Long press duration (2 seconds)
-    };
+    btn.addEventListener("click", () => {
+        pressCount++;
 
-    const stopHold = () => {
-        clearTimeout(holdTimeout);
-        if (isHeld) {
-            isHeld = false; // Reset the flag
-            return; // Prevent timer toggle if it was a hold
-        }
-
-        // Short press logic: Start/stop the timer
-        if (btn.classList.contains('active')) {
-            clearInterval(buttonTimers[id]); // Stop the timer
-            btn.classList.remove('active');
-            btn.style.backgroundColor = 'lightgray'; // Reset to default
-        } else {
-            btn.classList.add('active');
-            btn.style.backgroundColor = 'green'; // Timer start color
+        if (pressCount === 1) {
+            // First press: Change the button color
+            btn.style.backgroundColor = "purple";
+        } else if (pressCount === 2) {
+            // Second press: Start the timer
+            btn.style.backgroundColor = "green";
             const startTime = Date.now();
-            buttonTimers[id] = setInterval(() => updateButtonColor(btn, startTime), 1000);
+            timer = setInterval(() => updateButtonColor(btn, startTime), 1000);
+        } else if (pressCount === 3) {
+            // Third press: Reset the button and timer
+            clearInterval(timer);
+            btn.style.backgroundColor = "lightgray";
+            btn.classList.remove("active");
+            pressCount = 0;
         }
-    };
-
-    // Add mouse and touch event listeners
-    btn.addEventListener('mousedown', (event) => {
-        isTouch = false; // Detect mouse interaction
-        startHold();
-    });
-
-    btn.addEventListener('mouseup', (event) => {
-        if (!isTouch) stopHold();
-    });
-
-    btn.addEventListener('mouseleave', () => {
-        clearTimeout(holdTimeout); // Cancel hold on mouse leave
-        isHeld = false; // Reset the flag
-    });
-
-    btn.addEventListener('touchstart', (event) => {
-        isTouch = false; // Detect touch interaction
-        startHold();
-    });
-
-    btn.addEventListener('touchend', (event) => {
-        if (!isTouch) stopHold();
-    });
-
-    btn.addEventListener('touchcancel', () => {
-        clearTimeout(holdTimeout); // Cancel hold on touch interruption
-        isHeld = false; // Reset the flag
     });
 }
 
 
 
-/*
-function toggleTimer(btn, id) {
-    if (btn.classList.contains('active')) {
-        clearInterval(buttonTimers[id]);
-        btn.classList.remove('active');
-        btn.style.backgroundColor = 'lightgray';
-    } else {
-        btn.classList.add('active');
-        btn.style.backgroundColor = 'green';
-        const startTime = Date.now();
-        buttonTimers[id] = setInterval(() => updateButtonColor(btn, startTime), 1000);
-    }
-}
-*/
+
+
+
 function updateButtonColor(btn, startTime) {
     const elapsed = (Date.now() - startTime) / 1000;
     btn.style.backgroundColor =
-        elapsed < 60 * 10
+        elapsed < 5
             ? 'green'
-            : elapsed < 60 * 35
+            : elapsed < 10
             ? 'yellow'
-            : elapsed < 60 * 90
+            : elapsed < 15
             ? 'orange'
             : 'red';
 }

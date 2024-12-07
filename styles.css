@@ -44,6 +44,20 @@ body {
     resize: none; /* Disable resizing */
 }
 
+.small-text-box {
+    position: absolute;
+    top: 650px; /* Adjust position */
+    left: 460px; /* Adjust position */
+    width: 180px; /* Adjust size */
+    height: 40px; /* Adjust size */
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 
 .station-button,
 .vert-button,
