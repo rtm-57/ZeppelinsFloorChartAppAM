@@ -383,53 +383,73 @@ function createButtons() {
                     : button.type === 'circular' ? 'circular-button' 
                     : button.type === 'buttonv' ? 'vert-button' 
                     : 'station-button'; // Assign appropriate styles
+        btn.id = button.id;
         btn.innerText = button.id;
         btn.style.left = `${button.x}px`;
         btn.style.top = `${button.y}px`;
-        buttonTimers[button.id] = null;
 
-        // Apply the dual functionality handler
         toggleTimer(btn, button.id);
-
         controlsDiv.appendChild(btn);
     });
+
+    // Load button states
+    loadState();
 }
 
+// Function to toggle button timers
 function toggleTimer(btn, id) {
     let pressCount = 0;
-    let timer = null;
 
     btn.addEventListener("click", () => {
         pressCount++;
 
         if (pressCount === 1) {
-            // First press: Change the button color
             btn.style.backgroundColor = "purple";
         } else if (pressCount === 2) {
-            // Second press: Start the timer
             btn.style.backgroundColor = "green";
             const startTime = Date.now();
-            timer = setInterval(() => updateButtonColor(btn, startTime), 1000);
+            const timer = setInterval(() => updateButtonColor(btn, Date.now() - startTime), 1000);
+            buttonTimers[id] = { startTime, timer, active: true };
         } else if (pressCount === 3) {
-            // Third press: Reset the button and timer
-            clearInterval(timer);
             btn.style.backgroundColor = "lightgray";
-            btn.classList.remove("active");
+            const timerData = buttonTimers[id];
+            if (timerData && timerData.timer) clearInterval(timerData.timer);
+            buttonTimers[id] = { startTime: null, timer: null, active: false };
             pressCount = 0;
         }
     });
 }
 
-function updateButtonColor(btn, startTime) {
-    const elapsed = (Date.now() - startTime) / 1000;
-    btn.style.backgroundColor =
-        elapsed < 60 * 10
-            ? 'green'
-            : elapsed < 60* 35
-            ? 'yellow'
-            : elapsed < 60 * 90
-            ? 'orange'
-            : 'red';
+// Initialize button timers with restored state
+function initializeButtonTimer(btn, id, startTime, active) {
+    if (active) {
+        const elapsed = Date.now() - startTime;
+        updateButtonColor(btn, elapsed);
+
+        const timer = setInterval(() => {
+            const currentElapsed = Date.now() - startTime;
+            updateButtonColor(btn, currentElapsed);
+        }, 1000);
+
+        buttonTimers[id] = { startTime, timer, active: true };
+    } else {
+        buttonTimers[id] = { startTime: null, timer: null, active: false };
+        btn.style.backgroundColor = "lightgray";
+    }
+}
+
+// Function to update button color based on elapsed time
+function updateButtonColor(btn, elapsed) {
+    const seconds = Math.floor(elapsed / 1000);
+    if (seconds < 600) {
+        btn.style.backgroundColor = "green";
+    } else if (seconds < 2100) {
+        btn.style.backgroundColor = "yellow";
+    } else if (seconds < 5400) {
+        btn.style.backgroundColor = "orange";
+    } else {
+        btn.style.backgroundColor = "red";
+    }
 }
 
 //Drawing Lines
@@ -615,6 +635,9 @@ document.getElementById('resetButton').addEventListener('click', () => {
     if (confirm("Are you sure you want to reset? This will clear all progress.")) {
         resetProgram();
     }
+    else{
+        
+    }
 });
 
 function positionResetButton(x, y) {
@@ -694,11 +717,22 @@ window.onload = () => {
 };
 */
 // Function to save the app state to localStorage
+// Save the app state, including button timers
+
+// Function to save the app state to localStorage
 function saveState() {
     const state = {
         notes: document.getElementById('notes').value,
-        timers: buttonTimers, // Assuming buttonTimers stores the state of timers
-        lines: serverCount, // Current server layout
+        timers: Object.entries(buttonTimers).reduce((acc, [id, timerData]) => {
+            if (timerData) {
+                acc[id] = {
+                    startTime: timerData.startTime,
+                    active: timerData.active,
+                };
+            }
+            return acc;
+        }, {}),
+        serverCount: serverCount,
         serverNames: [...document.querySelectorAll('textarea[id^="svr"]')].map(el => el.value),
         reservations: [...document.querySelectorAll('textarea[id^="res"]')].map(el => el.value),
     };
@@ -715,12 +749,14 @@ function loadState() {
         // Restore notes
         document.getElementById('notes').value = state.notes || '';
 
-        // Restore timers
-        Object.assign(buttonTimers, state.timers || {});
-
-        // Restore server lines and redraw
-        serverCount = state.lines || 0;
-        if (serverCount > 0) drawLines(serverCount);
+        // Restore button timers after buttons are created
+        Object.keys(state.timers).forEach(id => {
+            const timerData = state.timers[id];
+            if (timerData) {
+                const btn = document.getElementById(id);
+                if (btn) initializeButtonTimer(btn, id, timerData.startTime, timerData.active);
+            }
+        });
 
         // Restore server names
         [...document.querySelectorAll('textarea[id^="svr"]')].forEach((el, i) => {
@@ -734,25 +770,26 @@ function loadState() {
 
         console.log('State loaded.');
     } else {
-        // Initialize default state if no saved state exists
         console.log('No saved state found. Initializing defaults.');
         initializeDefaultState();
     }
 }
+// Function to initialize button timers
+function initializeButtonTimer(btn, id, startTime, active) {
+    if (active) {
+        const elapsed = Date.now() - startTime;
+        updateButtonColor(btn, elapsed);
 
-// Function to initialize default states when the app is opened for the first time
-function initializeDefaultState() {
-    document.getElementById('notes').value = '';
-    serverCount = 0;
+        const timer = setInterval(() => {
+            const currentElapsed = Date.now() - startTime;
+            updateButtonColor(btn, currentElapsed);
+        }, 1000);
 
-    // Clear all server and reservation fields
-    [...document.querySelectorAll('textarea[id^="svr"], textarea[id^="res"]')].forEach(el => {
-        el.value = '';
-    });
-
-    // Initialize buttons and layout
-    createButtons();
-    drawFloorLayout();
+        buttonTimers[id] = { startTime, timer, active: true };
+    } else {
+        buttonTimers[id] = { startTime: null, timer: null, active: false };
+        btn.style.backgroundColor = "lightgray";
+    }
 }
 
 // Function to clear the saved state
@@ -771,11 +808,11 @@ function resetNoteBoxes() {
 }
 
 // Autosave every 30 seconds
-setInterval(saveState, 30000);
+setInterval(saveState, 10000);
 
 // Load the state or initialize defaults on page load
+// Initialize the app on page load
 window.onload = () => {
-    loadState();
     createButtons();
     showModal();
 };
