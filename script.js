@@ -605,6 +605,9 @@ function resetProgram() {
     createButtons();
     drawFloorLayout();
     showModal();
+    
+    // Reset the note boxes
+    resetNoteBoxes();
 }
 
 
@@ -671,7 +674,7 @@ function drawCustomLines(cut) {
         drawLines(2); // Draw lines for the second cut
     }
 }
-
+/*
 // Application initialization
 function initialize(serverCount, initialLabelPositions) {
     labelPositions = initialLabelPositions; // Set the global label positions
@@ -689,3 +692,97 @@ window.onload = () => {
     createButtons(); // Initializes the buttons
     showModal();     // Display the server count modal when the page loads
 };
+*/
+// Function to save the app state to localStorage
+function saveState() {
+    const state = {
+        notes: document.getElementById('notes').value,
+        timers: buttonTimers, // Assuming buttonTimers stores the state of timers
+        lines: serverCount, // Current server layout
+        serverNames: [...document.querySelectorAll('textarea[id^="svr"]')].map(el => el.value),
+        reservations: [...document.querySelectorAll('textarea[id^="res"]')].map(el => el.value),
+    };
+    localStorage.setItem('appState', JSON.stringify(state));
+    console.log('State saved.');
+}
+
+// Function to load the app state from localStorage
+function loadState() {
+    const savedState = localStorage.getItem('appState');
+    if (savedState) {
+        const state = JSON.parse(savedState);
+
+        // Restore notes
+        document.getElementById('notes').value = state.notes || '';
+
+        // Restore timers
+        Object.assign(buttonTimers, state.timers || {});
+
+        // Restore server lines and redraw
+        serverCount = state.lines || 0;
+        if (serverCount > 0) drawLines(serverCount);
+
+        // Restore server names
+        [...document.querySelectorAll('textarea[id^="svr"]')].forEach((el, i) => {
+            el.value = state.serverNames[i] || '';
+        });
+
+        // Restore reservations
+        [...document.querySelectorAll('textarea[id^="res"]')].forEach((el, i) => {
+            el.value = state.reservations[i] || '';
+        });
+
+        console.log('State loaded.');
+    } else {
+        // Initialize default state if no saved state exists
+        console.log('No saved state found. Initializing defaults.');
+        initializeDefaultState();
+    }
+}
+
+// Function to initialize default states when the app is opened for the first time
+function initializeDefaultState() {
+    document.getElementById('notes').value = '';
+    serverCount = 0;
+
+    // Clear all server and reservation fields
+    [...document.querySelectorAll('textarea[id^="svr"], textarea[id^="res"]')].forEach(el => {
+        el.value = '';
+    });
+
+    // Initialize buttons and layout
+    createButtons();
+    drawFloorLayout();
+}
+
+// Function to clear the saved state
+function resetState() {
+    localStorage.removeItem('appState');
+    console.log('State cleared.');
+    resetProgram(); // Call your existing reset logic
+}
+
+// Function to reset the note boxes
+function resetNoteBoxes() {
+    [...document.querySelectorAll('textarea[id^="svr"], textarea[id^="res"], #notes')].forEach(el => {
+        el.value = ''; // Clear the text in each note box
+    });
+    console.log('Note boxes reset.');
+}
+
+// Autosave every 30 seconds
+setInterval(saveState, 30000);
+
+// Load the state or initialize defaults on page load
+window.onload = () => {
+    loadState();
+    createButtons();
+    showModal();
+};
+
+// Attach the reset functionality to the reset button
+document.getElementById('resetButton').addEventListener('click', () => {
+    if (confirm("Are you sure you want to reset? This will clear all progress.")) {
+        resetState();
+    }
+});
