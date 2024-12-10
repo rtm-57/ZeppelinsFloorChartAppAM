@@ -34,12 +34,207 @@ body {
     position: absolute;
     top: 450px; /* Adjust vertical position */
     left: 700px; /* Adjust horizontal position */
-    width: 480px; /* Small width */
+    width: 380px; /* Small width */
     height: 280px; /* Small height */
     font-family: Arial, sans-serif;
     font-size: 30px;
     padding: 5px;
     border: 3px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#res1 {
+    position: absolute;
+    top: 520px; /* Adjust vertical position */
+    left: 1100px; /* Adjust horizontal position */
+    width: 100px; /* Small width */
+    height: 100px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#res2 {
+    position: absolute;
+    top: 720px; /* Adjust vertical position */
+    left: 1250px; /* Adjust horizontal position */
+    width: 200px; /* Small width */
+    height: 60px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#res3 {
+    position: absolute;
+    top: 60px; /* Adjust vertical position */
+    left: 310px; /* Adjust horizontal position */
+    width: 100px; /* Small width */
+    height: 340px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#res4 {
+    position: absolute;
+    top: 25px; /* Adjust vertical position */
+    left: 1510px; /* Adjust horizontal position */
+    width: 140px; /* Small width */
+    height: 40px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 5px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#svr1 {
+    position: absolute;
+    top: 80px; /* Adjust vertical position */
+    left: 1510px; /* Adjust horizontal position */
+    width: 150px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#svr2 {
+    position: absolute;
+    top: 180px; /* Adjust vertical position */
+    left: 730px; /* Adjust horizontal position */
+    width: 150px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+#svr3 {
+    position: absolute;
+    top: 670px; /* Adjust vertical position */
+    left: 1510px; /* Adjust horizontal position */
+    width: 150px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+#svr4 {
+    position: absolute;
+    top: 290px; /* Adjust vertical position */
+    left: 1510px; /* Adjust horizontal position */
+    width: 150px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+#svr5 {
+    position: absolute;
+    top: 280px; /* Adjust vertical position */
+    left: 920px; /* Adjust horizontal position */
+    width: 100px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#svr6 {
+    position: absolute;
+    top: 420px; /* Adjust vertical position */
+    left: 1510px; /* Adjust horizontal position */
+    width: 100px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+
+#svr7 {
+    position: absolute;
+    top: 480px; /* Adjust vertical position */
+    left: 450px; /* Adjust horizontal position */
+    width: 150px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+#svr8 {
+    position: absolute;
+    top: 110px; /* Adjust vertical position */
+    left: 560px; /* Adjust horizontal position */
+    width: 100px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+}
+#svr9 {
+    position: absolute;
+    top: 280px; /* Adjust vertical position */
+    left: 570px; /* Adjust horizontal position */
+    width: 95px; /* Small width */
+    height: 25px; /* Small height */
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: red; /* Text color changed to red */
+    background-color: white; /* Background color changed to yellow */
+    padding: 5px;
+    border: 0px solid #ccc;
     border-radius: 5px;
     resize: none; /* Disable resizing */
 }

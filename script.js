@@ -44,10 +44,11 @@ const buttonPositions = [
     { id: "ZT 4", x: 1335, y: 675, type: "buttonv" },
     // Circular Buttons
     { id: "AT 2", x: 610, y: 325, type: "circular" },
-    { id: "BT 8", x: 760, y: 120, type: "circular" },
+    { id: "BT 6", x: 760, y: 120, type: "circular" },
     { id: "BT 1", x: 1070, y: 75, type: "circular" },
     { id: "RT 1", x: 1400, y: 25, type: "circular" },
     { id: "RT 2", x: 1320, y: 25, type: "circular" },
+    { id: "BT 8", x: 690, y: 270, type: "circular" },
     // Diamond Buttons
     { id: "AT 3", x: 505, y: 50, type: "diamond" },
     { id: "AT 1", x: 580, y: 50, type: "diamond" },
@@ -346,41 +347,7 @@ const linePoints9 = [
 
 ];
 
-const predefinedCoordinates = [
-    { x: 1550, y: 100 }, // For server name 1
-    { x: 760, y: 200 }, // For server name 2
-    { x: 1550, y: 700 }, // For server name 3
-    { x: 1550, y: 320 }, // For server name 4
-    { x: 960, y: 300 }, // For server name 5
-    { x: 1550, y: 450 }, // For server name 6
-    { x: 480, y: 500 }, // For server name 7
-    { x: 590, y: 140 }, // For server name 8
-    { x: 610, y: 300 }  // For server name 9
-];
-const predefinedCoordinates7 = [
-    { x: 1550, y: 100 }, // For server name 1
-    { x: 760, y: 200 }, // For server name 2
-    { x: 1550, y: 700 }, // For server name 3
-    { x: 1550, y: 320 }, // For server name 4
-    { x: 960, y: 300 }, // For server name 5
-    { x: 620, y: 160 }, // For server name 6
-    { x: 480, y: 520 }, // For server name 7
-];
-
 let serverCount = 0;
-
-let labelPositions = [
-    { name: "Server 1", x: 1550, y: 100 },
-    { name: "Server 2", x: 760, y: 200 },
-    { name: "Server 3", x: 1550, y: 700 },
-    { name: "Server 4", x: 1550, y: 320 },
-    { name: "Server 5", x: 960, y: 300 },
-    { name: "Server 6", x: 1550, y: 450 },
-    { name: "Server 7", x: 480, y: 500 },
-    { name: "Server 8", x: 590, y: 140 },
-    { name: "Server 9", x: 610, y: 300 }
-];
-
 // Show and hide modal logic
 function showModal() {
     document.getElementById('serverModal').style.display = 'flex';
@@ -453,11 +420,6 @@ function toggleTimer(btn, id) {
     });
 }
 
-
-
-
-
-
 function updateButtonColor(btn, startTime) {
     const elapsed = (Date.now() - startTime) / 1000;
     btn.style.backgroundColor =
@@ -470,8 +432,7 @@ function updateButtonColor(btn, startTime) {
             : 'red';
 }
 
-
-
+//Drawing Lines
 function drawLines(serverCount) {
     const canvas = document.getElementById('floorCanvas');
     const ctx = canvas.getContext('2d');
@@ -613,92 +574,12 @@ function drawLines(serverCount) {
     }
 }
 
-let serverNames = [];
-
-function showNamesModal(count) {
-    const namesContainer = document.getElementById('namesContainer');
-    namesContainer.innerHTML = ''; // Clear previous inputs
-
-    for (let i = 0; i < count; i++) {
-        const label = document.createElement('label');
-        label.textContent = `Server ${i + 1} Name:`;
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.id = `serverName${i}`;
-        input.placeholder = `Enter name for Server ${i + 1}`;
-        namesContainer.appendChild(label);
-        namesContainer.appendChild(input);
-        namesContainer.appendChild(document.createElement('br'));
-    }
-
-    document.getElementById('serverNamesModal').style.display = 'flex';
-}
-
-function hideNamesModal() {
-    document.getElementById('serverNamesModal').style.display = 'none';
-    document.getElementById('canvas-container').style.display = 'block';
-}
-
-function drawLabels(labelPositions) {
-    const canvas = document.getElementById('floorCanvas');
-    const ctx = canvas.getContext('2d');
-
-    ctx.font = '20px Arial';
-    ctx.fillStyle = 'red';
-    ctx.textAlign = 'center';
-
-    labelPositions.forEach(label => {
-        ctx.fillText(label.name, label.x, label.y); // Draw the name at (x, y)
-    });
-}
-
-function assignCoordinates(names, serverCount) {
-    return names.map((name, index) => {
-        // Handle the special case for server count 7 and server 6
-        if (serverCount === 7 && index === 5) {
-            return {
-                name: name,
-                x: 620, // Special x-coordinate for server 6
-                y: 160  // Special y-coordinate for server 6
-            };
-        }
-
-        // Default behavior for all other labels
-        return {
-            name: name,
-            x: predefinedCoordinates[index].x,
-            y: predefinedCoordinates[index].y
-        };
-    });
-}
-
-document.getElementById('submitNames').addEventListener('click', () => {
-    serverNames = [];
-    const inputs = document.querySelectorAll('#namesContainer input');
-    inputs.forEach(input => {
-        serverNames.push(input.value.trim());
-    });
-
-    if (serverNames.some(name => name === '')) {
-        alert('Please fill in all server names.');
-        return;
-    }
-
-    try {
-        const labelPositions = assignCoordinates(serverNames, serverCount); // Pass server count
-        hideNamesModal();
-        initialize(serverCount, labelPositions); // Pass positions to initialize
-    } catch (error) {
-        alert(error.message);
-    }
-});
-
 document.getElementById('submitServers').addEventListener('click', () => {
     const input = parseInt(document.getElementById('serverCount').value, 10);
     if (input >= 4 && input <= 9) {
         serverCount = input;
         hideModal();
-        showNamesModal(serverCount);
+        drawLines(serverCount);
     } else {
         alert(`Please enter a valid number between 4 and 9.`);
     }
@@ -709,24 +590,23 @@ document.getElementById('resetButton').addEventListener('click', () => {
 });
 
 function resetProgram() {
-    // Reset server-related variables
     serverCount = 0;
-    serverNames = [];
-    document.getElementById('namesContainer').innerHTML = '';
 
-    // Clear the canvas
     const canvas = document.getElementById('floorCanvas');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Reset button states
     const controlsDiv = document.getElementById('controls');
     controlsDiv.innerHTML = '';
 
-    // Hide the canvas container and show the modal
     document.getElementById('canvas-container').style.display = 'none';
+
+    // Recreate buttons and redraw the floor layout
+    createButtons();
+    drawFloorLayout();
     showModal();
 }
+
 
 document.getElementById('resetButton').addEventListener('click', () => {
     if (confirm("Are you sure you want to reset? This will clear all progress.")) {
@@ -774,26 +654,6 @@ function deleteSpecificLabels(cut) {
     const canvas = document.getElementById('floorCanvas');
     const ctx = canvas.getContext('2d');
 
-    let labelsToKeep; // Declare outside the blocks
-
-    if (cut === 1) {
-        labelsToKeep = [0, 1, 2, 6]; // Indices to keep for the first cut
-    } else if (cut === 2) {
-        labelsToKeep = [0, 1]; // Indices to keep for the second cut
-    } else {
-        console.error("Invalid cut parameter");
-        return;
-    }
-
-    // Ensure `labelPositions` exists and has valid data
-    if (!Array.isArray(labelPositions) || labelPositions.length === 0) {
-        console.error("No labels found to process.");
-        return;
-    }
-
-    // Filter labels to keep only the specified ones
-    const remainingLabels = labelPositions.filter((_, index) => labelsToKeep.includes(index));
-
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -802,16 +662,7 @@ function deleteSpecificLabels(cut) {
 
     // Draw the custom lines based on the cut type
     drawCustomLines(cut);
-
-    // Redraw the remaining labels
-    drawLabels(remainingLabels);
-
-    // Update the global `labelPositions` to reflect the remaining labels
-    labelPositions = remainingLabels;
-
-    console.log(`Remaining labels after Cut ${cut}:`, labelPositions);
 }
-
 
 function drawCustomLines(cut) {
     if (cut === 1) {
@@ -821,15 +672,12 @@ function drawCustomLines(cut) {
     }
 }
 
-
-
 // Application initialization
 function initialize(serverCount, initialLabelPositions) {
     labelPositions = initialLabelPositions; // Set the global label positions
     drawFloorLayout(); // Draw the base layout
     createButtons(); // Create interactive buttons
     drawLines(serverCount); // Draw server-specific lines
-    drawLabels(labelPositions); // Draw initial labels
     positionResetButton(460, 650); // Place Reset button
     positionFirstCutButton(460, 550); // Place First Cut button
     positionSecondCutButton(460, 600); // Place First Cut button
