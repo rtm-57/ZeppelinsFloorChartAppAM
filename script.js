@@ -395,30 +395,33 @@ function createButtons() {
     // Load button states
     loadState();
 }
+let pressCounts = {};
 
-// Function to toggle button timers
 function toggleTimer(btn, id) {
-    let pressCount = 0;
+    if (!pressCounts[id]) pressCounts[id] = 0;
 
     btn.addEventListener("click", () => {
-        pressCount++;
+        pressCounts[id]++;
+        btn.innerText = `${id}`; // Update button text to show count
 
-        if (pressCount === 1) {
+        if (pressCounts[id] === 1) {
             btn.style.backgroundColor = "purple";
-        } else if (pressCount === 2) {
+        } else if (pressCounts[id] === 2) {
             btn.style.backgroundColor = "green";
             const startTime = Date.now();
             const timer = setInterval(() => updateButtonColor(btn, Date.now() - startTime), 1000);
             buttonTimers[id] = { startTime, timer, active: true };
-        } else if (pressCount === 3) {
+        } else if (pressCounts[id] === 3) {
             btn.style.backgroundColor = "lightgray";
             const timerData = buttonTimers[id];
             if (timerData && timerData.timer) clearInterval(timerData.timer);
             buttonTimers[id] = { startTime: null, timer: null, active: false };
-            pressCount = 0;
+            pressCounts[id] = 0; // Reset count
+            
         }
     });
 }
+
 
 // Initialize button timers with restored state
 function initializeButtonTimer(btn, id, startTime, active) {
@@ -611,6 +614,7 @@ document.getElementById('resetButton').addEventListener('click', () => {
 
 function resetProgram() {
     serverCount = 0;
+    pressCounts = {}; // Clear press counts
 
     const canvas = document.getElementById('floorCanvas');
     const ctx = canvas.getContext('2d');
@@ -625,10 +629,11 @@ function resetProgram() {
     createButtons();
     drawFloorLayout();
     showModal();
-    
+
     // Reset the note boxes
     resetNoteBoxes();
 }
+
 
 
 document.getElementById('resetButton').addEventListener('click', () => {
@@ -697,31 +702,10 @@ function drawCustomLines(cut) {
         drawLines(2); // Draw lines for the second cut
     }
 }
-/*
-// Application initialization
-function initialize(serverCount, initialLabelPositions) {
-    labelPositions = initialLabelPositions; // Set the global label positions
-    drawFloorLayout(); // Draw the base layout
-    createButtons(); // Create interactive buttons
-    drawLines(serverCount); // Draw server-specific lines
-    positionResetButton(460, 650); // Place Reset button
-    positionFirstCutButton(460, 550); // Place First Cut button
-    positionSecondCutButton(460, 600); // Place First Cut button
-}
-
-
-
-window.onload = () => {
-    createButtons(); // Initializes the buttons
-    showModal();     // Display the server count modal when the page loads
-};
-*/
-// Function to save the app state to localStorage
-// Save the app state, including button timers
 
 // Function to save the app state to localStorage
 function saveState() {
-    const shift = "AM"; // Change this to "PM" for the PM shift repository
+    const shift = "AM";
     const state = {
         notes: document.getElementById('notes').value,
         timers: Object.entries(buttonTimers).reduce((acc, [id, timerData]) => {
@@ -736,14 +720,16 @@ function saveState() {
         serverCount: serverCount,
         serverNames: [...document.querySelectorAll('textarea[id^="svr"]')].map(el => el.value),
         reservations: [...document.querySelectorAll('textarea[id^="res"]')].map(el => el.value),
+        pressCounts: pressCounts, // Save press counts
     };
     localStorage.setItem(`appState-${shift}`, JSON.stringify(state));
     console.log('State saved.');
 }
 
+
 // Function to load the app state from localStorage
 function loadState() {
-    const shift = "AM"; // Change this to "PM" for the PM shift repository
+    const shift = "AM";
     const savedState = localStorage.getItem(`appState-${shift}`);
     if (savedState) {
         const state = JSON.parse(savedState);
@@ -751,7 +737,7 @@ function loadState() {
         // Restore notes
         document.getElementById('notes').value = state.notes || '';
 
-        // Restore button timers after buttons are created
+        // Restore button timers
         Object.keys(state.timers).forEach(id => {
             const timerData = state.timers[id];
             if (timerData) {
@@ -760,22 +746,21 @@ function loadState() {
             }
         });
 
-        // Restore server names
-        [...document.querySelectorAll('textarea[id^="svr"]')].forEach((el, i) => {
-            el.value = state.serverNames[i] || '';
-        });
-
-        // Restore reservations
-        [...document.querySelectorAll('textarea[id^="res"]')].forEach((el, i) => {
-            el.value = state.reservations[i] || '';
+        // Restore press counts
+        pressCounts = state.pressCounts || {};
+        Object.keys(pressCounts).forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                btn.innerText = `${id}`;
+            }
         });
 
         console.log('State loaded.');
     } else {
         console.log('No saved state found. Initializing defaults.');
-        initializeDefaultState();
     }
 }
+
 // Function to initialize button timers
 function initializeButtonTimer(btn, id, startTime, active) {
     if (active) {
