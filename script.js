@@ -396,13 +396,21 @@ function createButtons() {
     loadState();
 }
 let pressCounts = {};
+let undoStack = [];
 
 function toggleTimer(btn, id) {
     if (!pressCounts[id]) pressCounts[id] = 0;
 
     btn.addEventListener("click", () => {
+        // Save the current state before changing it
+        undoStack.push({
+            id: id,
+            pressCount: pressCounts[id],
+            color: btn.style.backgroundColor
+        });
+
         pressCounts[id]++;
-        btn.innerText = `${id}`; // Update button text to show count
+        btn.innerText = `${id}`;
 
         if (pressCounts[id] === 1) {
             btn.style.backgroundColor = "purple";
@@ -417,10 +425,34 @@ function toggleTimer(btn, id) {
             if (timerData && timerData.timer) clearInterval(timerData.timer);
             buttonTimers[id] = { startTime: null, timer: null, active: false };
             pressCounts[id] = 0; // Reset count
-            
         }
     });
 }
+
+document.getElementById('undoButton').addEventListener('click', () => {
+    if (undoStack.length > 0) {
+        const lastState = undoStack.pop();
+        const btn = document.getElementById(lastState.id);
+        if (btn) {
+            // Restore the previous state
+            pressCounts[lastState.id] = lastState.pressCount;
+            btn.style.backgroundColor = lastState.color;
+            btn.innerText = `${lastState.id}`;
+        }
+    } else {
+        alert("Nothing to undo!");
+    }
+});
+
+function positionUndoButton(x, y) {
+    const undoButton = document.getElementById('undoButton');
+    undoButton.style.left = `${x}px`;
+    undoButton.style.top = `${y}px`;
+}
+
+// Position the Undo button on the grid
+positionUndoButton(580, 650);
+
 
 
 // Initialize button timers with restored state
@@ -795,7 +827,7 @@ function resetNoteBoxes() {
     console.log('Note boxes reset.');
 }
 
-// Autosave every 30 seconds
+// Autosave every 10 seconds
 setInterval(saveState, 10000);
 
 // Load the state or initialize defaults on page load

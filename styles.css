@@ -253,6 +253,23 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.undo-button {
+    position: absolute; /* Allows precise placement using left and top */
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.undo-button:hover {
+    background-color: #cc8400;
+}
+
+
 .station-button,
 .vert-button,
 .circular-button,
