@@ -663,7 +663,7 @@ function resetProgram() {
     showModal();
 
     // Reset the note boxes
-    resetNoteBoxes();
+    resetNoteBoxes(); 
 }
 
 
@@ -725,7 +725,31 @@ function deleteSpecificLabels(cut) {
 
     // Draw the custom lines based on the cut type
     drawCustomLines(cut);
+
+    // Clear specific text boxes
+    clearCutTextBoxes(cut);
 }
+
+function clearCutTextBoxes(cut) {
+    if (cut === 1) {
+        // Clear specific text boxes for the First Cut
+        document.getElementById('svr4').value = '';
+        document.getElementById('svr5').value = '';
+        document.getElementById('svr6').value = '';
+        document.getElementById('svr8').value = '';
+        document.getElementById('svr9').value = '';
+    } else if (cut === 2) {
+        // Clear specific text boxes for the Second Cut
+        document.getElementById('svr3').value = '';
+        document.getElementById('svr5').value = '';
+        document.getElementById('svr6').value = '';
+        document.getElementById('svr8').value = '';
+        document.getElementById('svr9').value = '';
+        document.getElementById('svr7').value = '';
+        document.getElementById('svr4').value = '';
+    }
+}
+
 
 function drawCustomLines(cut) {
     if (cut === 1) {
