@@ -226,8 +226,8 @@ body {
 #svr9 {
     position: absolute;
     top: 280px; /* Adjust vertical position */
-    left: 570px; /* Adjust horizontal position */
-    width: 95px; /* Small width */
+    left: 585px; /* Adjust horizontal position */
+    width: 83px; /* Small width */
     height: 25px; /* Small height */
     font-family: Arial, sans-serif;
     font-size: 20px;

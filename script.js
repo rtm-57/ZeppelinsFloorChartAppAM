@@ -289,8 +289,10 @@ const linePoints8 = [
 
     
     //Addition
-    { start: { x: 430, y: 238 }, end: { x: 580, y: 238 } },
-    { start: { x: 580, y: 238 }, end: { x: 580, y: 150 } },
+    { start: { x: 430, y: 238 }, end: { x: 490, y: 238 } },
+    { start: { x: 490, y: 238 }, end: { x: 490, y: 325 } },
+    { start: { x: 490, y: 325 }, end: { x: 580, y: 325 } },
+    { start: { x: 580, y: 325 }, end: { x: 580, y: 150 } },
     { start: { x: 580, y: 150 }, end: { x: 680, y: 150 } },
     
 ];
