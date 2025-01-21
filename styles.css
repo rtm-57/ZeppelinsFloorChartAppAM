@@ -225,9 +225,9 @@ body {
 }
 #svr9 {
     position: absolute;
-    top: 280px; /* Adjust vertical position */
-    left: 585px; /* Adjust horizontal position */
-    width: 83px; /* Small width */
+    top: 200px; /* Adjust vertical position */
+    left: 495px; /* Adjust horizontal position */
+    width: 70px; /* Small width */
     height: 25px; /* Small height */
     font-family: Arial, sans-serif;
     font-size: 20px;

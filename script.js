@@ -51,17 +51,18 @@ const buttonPositions = [
     { id: "BT 8", x: 690, y: 270, type: "circular" },
     // Diamond Buttons
     { id: "AT 3", x: 505, y: 50, type: "diamond" },
-    { id: "AT 1", x: 580, y: 50, type: "diamond" },
+    { id: "AT 1", x: 600, y: 50, type: "diamond" },
     { id: "RT 6", x: 1240, y: 100, type: "diamond" },
     { id: "RT 7", x: 1240, y: 200, type: "diamond" },
     { id: "RT 8", x: 1240, y: 300, type: "diamond" },
     { id: "RT 3", x: 1335, y: 100, type: "diamond" },
     { id: "RT 4", x: 1335, y: 200, type: "diamond" },
     { id: "RT 5", x: 1335, y: 300, type: "diamond" },
-    { id: "AT 4", x: 505, y: 150, type: "diamond" },
+    { id: "AT 4", x: 505, y: 125, type: "diamond" },
     { id: "AT 7", x: 600, y: 175, type: "diamond" },
     { id: "AT 5", x: 505, y: 250, type: "diamond" },
     { id: "AT 6", x: 505, y: 350, type: "diamond" },
+    { id: "AT 8", x: 600, y: 250, type: "diamond" },
 ];
 
 const linePoints1 = [
@@ -292,8 +293,8 @@ const linePoints8 = [
     { start: { x: 430, y: 238 }, end: { x: 490, y: 238 } },
     { start: { x: 490, y: 238 }, end: { x: 490, y: 325 } },
     { start: { x: 490, y: 325 }, end: { x: 580, y: 325 } },
-    { start: { x: 580, y: 325 }, end: { x: 580, y: 150 } },
-    { start: { x: 580, y: 150 }, end: { x: 680, y: 150 } },
+    { start: { x: 580, y: 325 }, end: { x: 580, y: 238 } },
+    { start: { x: 580, y: 238 }, end: { x: 680, y: 238 } },
     
 ];
 const linePoints9 = [
@@ -342,9 +343,9 @@ const linePoints9 = [
     { start: { x: 600, y: 320 }, end: { x: 680, y: 320 } },
     { start: { x: 680, y: 320 }, end: { x: 680, y: 25 } },
     { start: { x: 430, y: 170 }, end: { x: 490, y: 170 } },
-    { start: { x: 490, y: 170 }, end: { x: 490, y: 230 } },
-    { start: { x: 490, y: 230 }, end: { x: 570, y: 230 } },
-    { start: { x: 570, y: 230 }, end: { x: 570, y: 150 } },
+    { start: { x: 490, y: 170 }, end: { x: 490, y: 198 } },
+    { start: { x: 490, y: 198 }, end: { x: 570, y: 198 } },
+    { start: { x: 570, y: 198 }, end: { x: 570, y: 150 } },
     { start: { x: 570, y: 150 }, end: { x: 680, y: 150 } },
 
 ];
